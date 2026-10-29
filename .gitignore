@@ -1,0 +1,20 @@
+# Ignorar arquivos temporários, caches e zips pesados
+__pycache__/
+*.py[cod]
+*$py.class
+.env
+.venv/
+venv/
+
+# Arquivos brutos/antigos na raiz que não fazem parte do app web
+*.zip
+SISAM_script/
+A807_Curitiba_INMET_Padronizado.csv
+Risco_Dengue_Curitiba_2023_2025.csv
+Risco_Dengue_Curitiba_2023_2025.xlsx
+
+# Banco SQLite local e mapas exportados em cache (gerados automaticamente)
+data/database/*.db
+data/database/*.db-journal
+data/exports/*.jpg
+data/exports/*.png

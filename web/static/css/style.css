@@ -1,0 +1,321 @@
+:root {
+  --primary: #1e3a5f;
+  --primary-light: #2c5282;
+  --secondary: #007791;
+  --bg-color: #f4f6f9;
+  --card-bg: #ffffff;
+  --text-dark: #2d3748;
+  --text-muted: #718096;
+  --border-color: #e2e8f0;
+  
+  /* Cores oficiais do modelo SAC Dengue */
+  --risco-baixo: #fff8bd;
+  --risco-baixo-border: #d4c86a;
+  --risco-medio: #ffd95b;
+  --risco-medio-border: #d4a51e;
+  --risco-alto: #f15b1b;
+  --risco-muito-alto: #b50000;
+  --sem-dados: #cbd5e0;
+}
+
+body {
+  background-color: var(--bg-color);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: var(--text-dark);
+  margin: 0;
+  padding: 0;
+}
+
+/* Header */
+.dashboard-header {
+  background: linear-gradient(135deg, #102a43 0%, #1e3a5f 100%);
+  color: white;
+  padding: 1.25rem 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-header .brand-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.dashboard-header .brand-subtitle {
+  font-size: 0.85rem;
+  color: #cbd5e0;
+}
+
+/* KPI Cards */
+.kpi-card {
+  background: var(--card-bg);
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  padding: 1.1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s, box-shadow 0.2s;
+  height: 100%;
+}
+
+.kpi-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.kpi-title {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 0.4rem;
+}
+
+.kpi-value {
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.kpi-desc {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+}
+
+/* Cards gerais */
+.content-card {
+  background: var(--card-bg);
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.card-header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.75rem;
+}
+
+.card-header-flex h5 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+/* Mapa Leaflet */
+#map {
+  width: 100%;
+  height: 780px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background-color: #e5edf5;
+}
+
+/* Legenda do Mapa */
+.map-legend {
+  background: white;
+  padding: 10px 14px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.map-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.legend-color-box {
+  width: 20px;
+  height: 14px;
+  border: 1px solid #777;
+  border-radius: 3px;
+  display: inline-block;
+  opacity: 0.85;
+}
+
+/* Tabela */
+.table-custom {
+  font-size: 0.85rem;
+}
+
+.table-custom th {
+  background-color: #f8fafc;
+  font-weight: 600;
+  border-top: none;
+  color: #4a5568;
+}
+
+.sortable-th {
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.sortable-th:hover {
+  background-color: #edf2f7 !important;
+  color: var(--primary);
+}
+
+.col-filter-btn {
+  font-size: 0.72rem;
+  opacity: 0.65;
+  transition: opacity 0.15s, transform 0.15s;
+}
+
+.col-filter-btn:hover {
+  opacity: 1;
+  transform: scale(1.18);
+  color: var(--primary) !important;
+}
+
+.table-filter-row th {
+  background-color: #f1f5f9;
+  padding: 0.35rem 0.4rem;
+}
+
+.table-filter-row .form-control-sm,
+.table-filter-row .form-select-sm {
+  font-size: 0.76rem;
+  padding: 0.2rem 0.4rem;
+}
+
+.badge-risco-muito-alto {
+  background-color: var(--risco-muito-alto);
+  color: white;
+}
+
+.badge-risco-alto {
+  background-color: var(--risco-alto);
+  color: white;
+}
+
+.badge-risco-medio {
+  background-color: var(--risco-medio);
+  color: #333;
+}
+
+.badge-risco-baixo {
+  background-color: var(--risco-baixo);
+  color: #333;
+  border: 1px solid var(--risco-baixo-border);
+}
+
+.badge-insuficiente {
+  background-color: var(--sem-dados);
+  color: #4a5568;
+}
+
+/* Alertas */
+.alert-card-warning {
+  background-color: #fffaf0;
+  border-left: 4px solid #dd6b20;
+  padding: 1rem;
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+}
+
+/* Estilos de Botões */
+.btn-qgis-export {
+  background: linear-gradient(135deg, #2b6cb0 0%, #1e3a5f 100%);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.25rem;
+  font-weight: 600;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s;
+}
+
+.btn-qgis-export:hover {
+  background: linear-gradient(135deg, #1e3a5f 0%, #102a43 100%);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+/* Rótulos de estações e estados no padrão oficial do QGIS */
+.station-label {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: #111111;
+  text-shadow:
+    -1px -1px 0 rgba(255, 255, 255, 0.85),
+     1px -1px 0 rgba(255, 255, 255, 0.85),
+    -1px  1px 0 rgba(255, 255, 255, 0.85),
+     1px  1px 0 rgba(255, 255, 255, 0.85);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.uf-label {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  color: #222222;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* Modais redimensionáveis por qualquer canto/borda e arrastáveis pelo topo */
+.modal-dialog:has(.modal-resizable) {
+  max-width: none !important;
+  width: auto !important;
+  display: flex;
+  justify-content: center;
+}
+
+.modal-resizable {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  max-width: 96vw;
+  max-height: 94vh;
+  overflow: hidden;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.28);
+}
+
+.modal-draggable-header {
+  cursor: move;
+  user-select: none;
+}
+
+.resizer-handle {
+  position: absolute;
+  z-index: 25;
+}
+.resizer-n  { top: -4px; left: 10px; right: 10px; height: 8px; cursor: ns-resize; }
+.resizer-s  { bottom: -4px; left: 10px; right: 10px; height: 8px; cursor: ns-resize; }
+.resizer-e  { right: -4px; top: 10px; bottom: 10px; width: 8px; cursor: ew-resize; }
+.resizer-w  { left: -4px; top: 10px; bottom: 10px; width: 8px; cursor: ew-resize; }
+.resizer-ne { top: -5px; right: -5px; width: 14px; height: 14px; cursor: nesw-resize; }
+.resizer-nw { top: -5px; left: -5px; width: 14px; height: 14px; cursor: nwse-resize; }
+.resizer-se {
+  bottom: 0;
+  right: 0;
+  width: 18px;
+  height: 18px;
+  cursor: nwse-resize;
+  background: linear-gradient(135deg, transparent 50%, #94a3b8 50%, #94a3b8 65%, transparent 65%, transparent 78%, #64748b 78%);
+  border-bottom-right-radius: 6px;
+}
+.resizer-sw { bottom: -5px; left: -5px; width: 14px; height: 14px; cursor: nesw-resize; }
